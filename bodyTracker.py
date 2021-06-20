@@ -19,7 +19,7 @@ class poseDetector:
         self.pose = self.mpPose.Pose(self.mode, self.upBody, self.smooth,
                                      self.detectionCon, self.trackCon)
 
-    def getPose(self, img, draw=True):
+    def getPose(self, img, draw=False):
         imgRGB = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
         self.results = self.pose.process(imgRGB)
         if self.results.pose_landmarks:
@@ -28,7 +28,7 @@ class poseDetector:
                                            self.mpPose.POSE_CONNECTIONS)
         return img
 
-    def getPosition(self, img, draw=True):
+    def getPosition(self, img, draw=False):
         self.landmarkList = []
         if self.results.pose_landmarks:
 
@@ -36,8 +36,7 @@ class poseDetector:
                 h, w, c = img.shape
                 cx, cy = int(lm.x * w), int(lm.y * h)
                 self.landmarkList.append([id, cx, cy])
-                if draw:
-                    cv2.circle(img, (cx, cy), 5, (255, 0, 0), cv2.FILLED)
+
         return self.landmarkList
 
     def getAngle(self, img, draw=True):
