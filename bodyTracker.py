@@ -54,8 +54,8 @@ class poseDetector:
         if angle < 0:
             angle += 360
         print(int(angle))
-        cv2.putText(img, str(int(angle)), (570, 35),
-                    cv2.FONT_HERSHEY_PLAIN, 2, (220, 100, 0), 2)
+        cv2.putText(img, "Angle: " + str(int(angle)), (840, 565),
+                    cv2.FONT_HERSHEY_PLAIN, 2, (220, 100, 0), 3)
         if draw:
             cv2.line(img, (x1, y1), (x2, y2), (255, 255, 255), 3)
             cv2.line(img, (x3, y3), (x2, y2), (255, 255, 255), 3)
