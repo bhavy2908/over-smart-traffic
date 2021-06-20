@@ -12,6 +12,13 @@ pTime = 0
 detector = bodyTracker.poseDetector()
 previousTime = 0
 
+folderPath = "imgAssets"
+myList = os.listdir(folderPath)
+print(myList)
+overlayList = []
+for imPath in myList:
+    image = cv2.imread(f'{folderPath}/{imPath}')
+    overlayList.append(image)
 
 
 while True:
